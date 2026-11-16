@@ -1,0 +1,51 @@
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  background: #f1f4f8;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: #1e3a5f;
+  color: #fff;
+}
+main {
+  max-width: 720px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+.card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+form {
+  display: grid;
+  gap: 0.75rem;
+}
+input,
+textarea {
+  padding: 0.6rem;
+  font: inherit;
+}
+.header-lista {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.online {
+  background: #d1fae5;
+  color: #065f46;
+}
+.offline {
+  background: #fee2e2;
+  color: #991b1b;
+}
