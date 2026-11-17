@@ -3,6 +3,7 @@ const badgeRed = document.getElementById("badge-red");
 const formIncidencia = document.getElementById("form-incidencia");
 const tituloInput = document.getElementById("titulo");
 const descripcionInput = document.getElementById("descripcion");
+const btnPurgar = document.getElementById("btn-purgar");
 
 function actualizarIndicadorRed() {
   if (navigator.onLine) {
@@ -119,6 +120,25 @@ formIncidencia.addEventListener("submit", (e) => {
   procesarEnvioReporte(datosFormulario).then(() => {
     formIncidencia.reset();
   });
+});
+
+btnPurgar.addEventListener("click", () => {
+  obtenerTodosLosRegistros()
+    .then((registros) => {
+      const sincronizados = registros.filter(
+        (item) => item.estado === "sincronizado",
+      );
+      const promesasDeBorrado = sincronizados.map((item) => {
+        return eliminarRegistro(item.id);
+      });
+      return Promise.all(promesasDeBorrado);
+    })
+    .then(() => {
+      return renderizarColaOutbox();
+    })
+    .catch((error) => {
+      console.error("[Outbox] Error al purgar registros sincronizados:", error);
+    });
 });
 
 actualizarIndicadorRed();
